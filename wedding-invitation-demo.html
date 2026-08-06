@@ -281,6 +281,27 @@ img { display:block; max-width:100%; }
 .gallery-grid {
   columns:2; column-gap:8px;
 }
+.gallery-feature {
+  display:grid; grid-template-columns:1.08fr 0.92fr; gap:10px;
+  margin-bottom:10px; align-items:stretch;
+}
+.gallery-feature .g-item { margin-bottom:0; }
+.gallery-feature .g-item img {
+  width:100%; height:100%; object-fit:cover; min-height:260px;
+}
+.gallery-feature .g-note {
+  border-radius:10px; padding:1.2rem;
+  background:var(--bg2); border:1px solid var(--line);
+  display:flex; flex-direction:column; justify-content:center;
+  box-shadow:0 4px 16px rgba(74,37,32,0.08);
+}
+.gallery-feature .g-note b {
+  font-family:var(--serif); color:var(--accent-deep);
+  font-size:1.05rem; letter-spacing:0.12em; margin-bottom:0.5rem;
+}
+.gallery-feature .g-note span {
+  color:var(--ink-soft); font-size:0.82rem; line-height:1.8;
+}
 .gallery-grid .g-item {
   break-inside:avoid; margin-bottom:8px; border-radius:8px; overflow:hidden;
   position:relative; cursor:pointer;
@@ -553,6 +574,7 @@ img { display:block; max-width:100%; }
   .cd-cell { min-width:60px; padding:0.8rem 0.3rem; }
   .cd-num { font-size:1.7rem; }
   .story-text .st-num { font-size:2rem; }
+  .gallery-feature { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -615,34 +637,34 @@ img { display:block; max-width:100%; }
 <section class="section story">
   <div class="story-title">
     <div class="st-deco"></div>
-    <h3>我 们 的 故 事</h3>
-    <p>Our Story</p>
+    <h3>恋 爱 记 录</h3>
+    <p>Love Notes</p>
   </div>
 
   <div class="story-item">
-    <div class="story-photo"><img src="assets/p01.jpg" alt="相识"></div>
+    <div class="story-photo"><img src="assets/p15.jpg" alt="日常陪伴"></div>
     <div class="story-text">
       <div class="st-num">01</div>
-      <div class="st-cap">初遇</div>
-      <div class="st-desc">命运的安排让我们相遇，一眼便知，你是我的余生。</div>
+      <div class="st-cap">陪伴</div>
+      <div class="st-desc">没有刻意记录开始，却把后来的每一天都过成了喜欢。一起吃饭、散步、分享小事，就是恋爱里最踏实的浪漫。</div>
     </div>
   </div>
 
   <div class="story-item reverse">
-    <div class="story-photo"><img src="assets/p05.jpg" alt="相知"></div>
+    <div class="story-photo"><img src="assets/p16.jpg" alt="一起奔赴"></div>
     <div class="story-text">
       <div class="st-num">02</div>
-      <div class="st-cap">相知</div>
-      <div class="st-desc">从春到秋，从晨到暮，每一次心跳都因你而温柔。</div>
+      <div class="st-cap">奔赴</div>
+      <div class="st-desc">我们见过彼此最真实的样子，也愿意为对方多走一步。爱不是一瞬间的热烈，而是一次次坚定地靠近。</div>
     </div>
   </div>
 
   <div class="story-item">
-    <div class="story-photo"><img src="assets/p08.jpg" alt="相爱"></div>
+    <div class="story-photo"><img src="assets/p17.jpg" alt="共同成长"></div>
     <div class="story-text">
       <div class="st-num">03</div>
-      <div class="st-cap">相恋</div>
-      <div class="st-desc">手牵着手走过四季，你的笑容是我最珍贵的风景。</div>
+      <div class="st-cap">成长</div>
+      <div class="st-desc">我们一起经历平凡，也一起收藏惊喜。那些看似普通的日子，回头看，都是爱情慢慢生长的证据。</div>
     </div>
   </div>
 
@@ -650,8 +672,8 @@ img { display:block; max-width:100%; }
     <div class="story-photo"><img src="assets/p12.jpg" alt="相守"></div>
     <div class="story-text">
       <div class="st-num">04</div>
-      <div class="st-cap">相守</div>
-      <div class="st-desc">执子之手，与子偕老。从此，一生一世一双人。</div>
+      <div class="st-cap">决定</div>
+      <div class="st-desc">从恋人到家人，从心动到笃定。2026 年 10 月 3 日，我们想把这份确定，郑重地分享给你。</div>
     </div>
   </div>
 </section>
@@ -662,7 +684,18 @@ img { display:block; max-width:100%; }
     <div class="gt-deco"></div>
     <h3>幸 福 瞬 间</h3>
   </div>
+  <div class="gallery-feature">
+    <div class="g-item"><img src="assets/p19.jpg" alt="恋爱记录主图"></div>
+    <div class="g-note">
+      <b>把日子拍成诗</b>
+      <span>新照片已重新加入排版：从恋爱里的日常记录，到婚纱照里的郑重仪式，一起放进这份邀请里。</span>
+    </div>
+  </div>
   <div class="gallery-grid" id="galleryGrid">
+    <div class="g-item"><img src="assets/p15.jpg" alt=""></div>
+    <div class="g-item"><img src="assets/p16.jpg" alt=""></div>
+    <div class="g-item"><img src="assets/p17.jpg" alt=""></div>
+    <div class="g-item"><img src="assets/p18.jpg" alt=""></div>
     <div class="g-item"><img src="assets/p02.jpg" alt=""></div>
     <div class="g-item"><img src="assets/p03.jpg" alt=""></div>
     <div class="g-item"><img src="assets/p04.jpg" alt=""></div>
@@ -704,35 +737,22 @@ img { display:block; max-width:100%; }
 <!-- ===== RSVP ===== -->
 <section class="section rsvp">
   <div class="rs-deco"></div>
-  <h3>出 席 回 执</h3>
-  <p class="rsvp-sub">期待您的到来</p>
+  <h3>写 下 祝 福</h3>
+  <p class="rsvp-sub">把想说的话 留在祝福墙</p>
   <form class="rsvp-form" id="rsvpForm">
     <div class="form-group">
       <label>您的姓名</label>
       <input type="text" id="rsvpName" placeholder="请输入姓名" required>
     </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>是否出席</label>
-        <select id="rsvpAttend">
-          <option value="yes">一定到场</option>
-          <option value="no">遗憾缺席</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>出席人数</label>
-        <input type="number" id="rsvpCount" min="1" max="10" value="1">
-      </div>
-    </div>
     <div class="form-group">
       <label>祝福留言</label>
-      <textarea id="rsvpMsg" placeholder="写下您对新人的祝福..."></textarea>
+      <textarea id="rsvpMsg" placeholder="写下您对新人的祝福..." required></textarea>
     </div>
-    <button type="submit" class="rsvp-submit">送 出 祝 福</button>
+    <button type="submit" class="rsvp-submit">送 上 祝 福</button>
   </form>
   <div class="rsvp-success" id="rsvpSuccess">
     <div class="check">❀</div>
-    <div>感谢您的祝福！<br>期待与您相聚在这美好的一天</div>
+    <div>感谢您的祝福！<br>这份心意已放进祝福墙</div>
   </div>
 </section>
 
@@ -1059,11 +1079,10 @@ img { display:block; max-width:100%; }
     var name = document.getElementById('rsvpName').value.trim();
     if (!name) return;
     var msg = document.getElementById('rsvpMsg').value.trim();
+    if (!msg) return;
     try {
       var data = {
         name: name,
-        attend: document.getElementById('rsvpAttend').value,
-        count: document.getElementById('rsvpCount').value,
         msg: msg,
         ts: Date.now()
       };

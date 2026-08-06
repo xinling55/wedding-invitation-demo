@@ -109,6 +109,7 @@ img { display:block; max-width:100%; }
 }
 .cover-img {
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  object-position:60% center;
   animation: kenBurns 20s ease-in-out infinite alternate;
 }
 @keyframes kenBurns {
@@ -263,9 +264,15 @@ img { display:block; max-width:100%; }
 }
 
 /* --- Gallery --- */
-.gallery { padding:4rem 1rem; background:var(--bg); }
+.gallery {
+  padding:4.8rem 1.05rem 4.4rem;
+  background:
+    radial-gradient(circle at 20% 4%, rgba(192,132,151,0.16), transparent 34%),
+    radial-gradient(circle at 90% 16%, rgba(201,169,110,0.18), transparent 32%),
+    linear-gradient(180deg, var(--bg) 0%, #f3e8dc 48%, var(--bg) 100%);
+}
 .gallery-title {
-  text-align:center; margin-bottom:2.5rem;
+  text-align:center; margin-bottom:2.2rem;
 }
 .gallery-title .gt-deco {
   width:50px; height:1px; background:var(--gold); margin:0 auto 1.2rem; position:relative;
@@ -278,18 +285,108 @@ img { display:block; max-width:100%; }
   font-family:var(--serif); font-size:1.6rem; font-weight:600;
   color:var(--ink); letter-spacing:0.2em;
 }
-.gallery-grid {
-  columns:2; column-gap:8px;
+.gallery-title .gallery-sub {
+  margin-top:0.55rem; font-family:var(--serif);
+  color:var(--muted); font-size:0.78rem; letter-spacing:0.18em;
 }
-.gallery-grid .g-item {
-  break-inside:avoid; margin-bottom:8px; border-radius:8px; overflow:hidden;
-  position:relative; cursor:pointer;
-  opacity:0; transform:scale(0.92);
-  transition:opacity 0.7s ease, transform 0.7s ease;
+.gallery-hero {
+  position:relative; margin-bottom:1.15rem; padding-bottom:3.9rem;
 }
-.gallery-grid .g-item.revealed { opacity:1; transform:scale(1); }
-.gallery-grid .g-item img { width:100%; height:auto; transition:transform 0.5s; }
-.gallery-grid .g-item:hover img { transform:scale(1.06); }
+.gallery-hero .hero-main {
+  height:360px; border-radius:22px 22px 8px 22px;
+  box-shadow:0 18px 42px rgba(74,37,32,0.18);
+}
+.gallery-hero .hero-main img {
+  width:100%; height:100%; object-fit:cover; object-position:center;
+}
+.gallery-hero-copy {
+  position:absolute; left:1rem; right:8.6rem; bottom:0;
+  min-height:118px; padding:1.1rem 1rem 1rem;
+  border-radius:18px; background:rgba(255,250,244,0.92);
+  border:1px solid rgba(201,169,110,0.42);
+  box-shadow:0 12px 30px rgba(74,37,32,0.14);
+  backdrop-filter:blur(10px);
+}
+.gallery-hero-copy b {
+  display:block; font-family:var(--serif); color:var(--accent-deep);
+  font-size:1.08rem; letter-spacing:0.12em; margin-bottom:0.42rem;
+}
+.gallery-hero-copy span {
+  display:block; color:var(--ink-soft); font-size:0.78rem; line-height:1.75;
+}
+.gallery-hero .hero-side {
+  position:absolute; right:0.35rem; bottom:0.9rem;
+  width:34%; height:142px; border-radius:14px;
+  border:5px solid var(--bg2);
+  box-shadow:0 12px 26px rgba(74,37,32,0.18);
+  transform:rotate(2.4deg);
+}
+.gallery-hero .hero-side img {
+  width:100%; height:100%; object-fit:cover;
+}
+.gallery-mosaic {
+  display:grid; grid-template-columns:repeat(6, 1fr);
+  grid-auto-rows:56px; gap:8px;
+}
+.gallery .g-item {
+  overflow:hidden; position:relative; cursor:pointer; background:var(--bg2);
+  border-radius:14px; border:1px solid rgba(201,169,110,0.25);
+  box-shadow:0 8px 20px rgba(74,37,32,0.09);
+  opacity:0; transform:translateY(22px) scale(0.96);
+  transition:opacity 0.75s ease, transform 0.75s ease, box-shadow 0.35s ease;
+}
+.gallery .g-item::after {
+  content:''; position:absolute; inset:7px; border:1px solid rgba(255,255,255,0.42);
+  border-radius:10px; pointer-events:none;
+}
+.gallery .g-item.revealed { opacity:1; transform:translateY(0) scale(1); }
+.gallery .hero-side { transform:translateY(22px) scale(0.96) rotate(2.4deg); }
+.gallery .hero-side.revealed { transform:translateY(0) scale(1) rotate(2.4deg); }
+.gallery .g-item img {
+  width:100%; height:100%; object-fit:cover; transition:transform 0.55s ease, filter 0.55s ease;
+}
+.gallery .g-item:hover {
+  box-shadow:0 12px 28px rgba(74,37,32,0.16);
+}
+.gallery .g-item:hover img { transform:scale(1.06); filter:saturate(1.06); }
+.gallery .g-wide { grid-column:span 4; grid-row:span 3; }
+.gallery .g-tall { grid-column:span 3; grid-row:span 4; }
+.gallery .g-square { grid-column:span 3; grid-row:span 3; }
+.gallery .g-small { grid-column:span 2; grid-row:span 2; border-radius:12px; }
+.gallery .g-large { grid-column:span 6; grid-row:span 4; border-radius:18px; }
+.gallery .g-caption {
+  grid-column:span 3; grid-row:span 2;
+  border-radius:16px; padding:1rem;
+  background:linear-gradient(145deg, rgba(255,250,244,0.92), rgba(245,226,219,0.88));
+  border:1px solid rgba(201,169,110,0.36);
+  box-shadow:0 8px 20px rgba(74,37,32,0.08);
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  font-family:var(--serif); color:var(--ink-soft); font-size:0.82rem;
+  line-height:1.75; letter-spacing:0.08em;
+}
+.gallery .g-caption::before,
+.gallery .g-caption::after {
+  content:'✦'; color:var(--gold); margin:0 0.35rem; font-size:0.72rem;
+}
+.gallery .g-caption-wide {
+  grid-column:span 4; grid-row:span 2;
+  background:linear-gradient(145deg, rgba(255,250,244,0.95), rgba(239,224,212,0.9));
+}
+.gallery .g-caption-soft {
+  grid-column:span 2; grid-row:span 2;
+  font-size:0.76rem; padding:0.85rem;
+  background:rgba(255,250,244,0.88);
+}
+.gallery .g-caption-deep {
+  grid-column:span 3; grid-row:span 2;
+  color:var(--bg2);
+  background:linear-gradient(145deg, rgba(157,79,99,0.92), rgba(192,132,151,0.82));
+  border-color:rgba(255,250,244,0.32);
+}
+.gallery .g-caption-deep::before,
+.gallery .g-caption-deep::after {
+  color:var(--gold-soft);
+}
 
 /* Lightbox */
 .lightbox {
@@ -553,6 +650,7 @@ img { display:block; max-width:100%; }
   .cd-cell { min-width:60px; padding:0.8rem 0.3rem; }
   .cd-num { font-size:1.7rem; }
   .story-text .st-num { font-size:2rem; }
+  .gallery-feature { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -574,7 +672,7 @@ img { display:block; max-width:100%; }
 
 <!-- ===== Cover ===== -->
 <section class="section cover">
-  <img class="cover-img" src="./assets/cover-B9x9vC1D.jpg" alt="封面">
+  <img class="cover-img" src="./assets/cover-xEwDX96E.jpg" alt="封面">
   <div class="cover-overlay"></div>
   <div class="cover-content">
     <div class="c-deco">THE WEDDING OF</div>
@@ -590,7 +688,7 @@ img { display:block; max-width:100%; }
 <!-- ===== Invitation Text ===== -->
 <section class="section invite-text">
   <div class="it-deco"></div>
-  <h2>婚礼邀请</h2>
+  <h2>好久不见<br>婚礼见</h2>
   <p>
     谨定于 公元二〇二六年十月三日<br>
     举行结婚典礼<br>
@@ -615,43 +713,43 @@ img { display:block; max-width:100%; }
 <section class="section story">
   <div class="story-title">
     <div class="st-deco"></div>
-    <h3>我 们 的 故 事</h3>
-    <p>Our Story</p>
+    <h3>恋 爱 记 录</h3>
+    <p>Love Notes</p>
   </div>
 
   <div class="story-item">
-    <div class="story-photo"><img src="./assets/p01-DWGIwT2k.jpg" alt="相识"></div>
+    <div class="story-photo"><img src="./assets/p15-BZI-2JqM.jpg" alt="日常陪伴"></div>
     <div class="story-text">
       <div class="st-num">01</div>
-      <div class="st-cap">初遇</div>
-      <div class="st-desc">命运的安排让我们相遇，一眼便知，你是我的余生。</div>
+      <div class="st-cap">陪伴</div>
+      <div class="st-desc">没有刻意记录开始，却把后来的每一天都过成了喜欢。一起吃饭、散步、分享小事，就是恋爱里最踏实的浪漫。</div>
     </div>
   </div>
 
   <div class="story-item reverse">
-    <div class="story-photo"><img src="./assets/p05-vc-DtvSv.jpg" alt="相知"></div>
+    <div class="story-photo"><img src="./assets/p16-BNa7H6tp.jpg" alt="一起奔赴"></div>
     <div class="story-text">
       <div class="st-num">02</div>
-      <div class="st-cap">相知</div>
-      <div class="st-desc">从春到秋，从晨到暮，每一次心跳都因你而温柔。</div>
+      <div class="st-cap">奔赴</div>
+      <div class="st-desc">我们见过彼此最真实的样子，也愿意为对方多走一步。爱不是一瞬间的热烈，而是一次次坚定地靠近。</div>
     </div>
   </div>
 
   <div class="story-item">
-    <div class="story-photo"><img src="./assets/p08-DX1pk6B6.jpg" alt="相爱"></div>
+    <div class="story-photo"><img src="./assets/p17-DnMb7lTM.jpg" alt="共同成长"></div>
     <div class="story-text">
       <div class="st-num">03</div>
-      <div class="st-cap">相恋</div>
-      <div class="st-desc">手牵着手走过四季，你的笑容是我最珍贵的风景。</div>
+      <div class="st-cap">成长</div>
+      <div class="st-desc">我们一起经历平凡，也一起收藏惊喜。那些看似普通的日子，回头看，都是爱情慢慢生长的证据。</div>
     </div>
   </div>
 
   <div class="story-item reverse">
-    <div class="story-photo"><img src="./assets/p12-DeAm7UHd.jpg" alt="相守"></div>
+    <div class="story-photo"><img src="./assets/p12-DVi7_ECH.jpg" alt="相守"></div>
     <div class="story-text">
       <div class="st-num">04</div>
-      <div class="st-cap">相守</div>
-      <div class="st-desc">执子之手，与子偕老。从此，一生一世一双人。</div>
+      <div class="st-cap">决定</div>
+      <div class="st-desc">从恋人到家人，从心动到笃定。2026 年 10 月 3 日，我们想把这份确定，郑重地分享给你。</div>
     </div>
   </div>
 </section>
@@ -661,18 +759,38 @@ img { display:block; max-width:100%; }
   <div class="gallery-title">
     <div class="gt-deco"></div>
     <h3>幸 福 瞬 间</h3>
+    <p class="gallery-sub">Our Romantic Gallery</p>
   </div>
-  <div class="gallery-grid" id="galleryGrid">
-    <div class="g-item"><img src="./assets/p02-B1kzc-Vr.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p03-CI5HVWiW.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p04-MoxMgvPu.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p07-Bayq61yf.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p09-BaaXNjdw.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p10-EH4E9ShP.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p11-dBpvxUk3.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p12-DeAm7UHd.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p13-5fuZvhrp.jpg" alt=""></div>
-    <div class="g-item"><img src="./assets/p14-BeaYMlJN.jpg" alt=""></div>
+  <div class="gallery-hero">
+    <div class="g-item hero-main"><img src="./assets/p19-CosB1fce.jpg" alt="恋爱记录主图"></div>
+    <div class="gallery-hero-copy">
+      <b>把日子拍成诗</b>
+      <span>从恋爱里的日常记录，到婚纱照里的郑重仪式，每一张照片都收藏着我们想与你分享的幸福。</span>
+    </div>
+    <div class="g-item hero-side"><img src="./assets/p18-2H3xN5d-.jpg" alt="幸福瞬间"></div>
+  </div>
+  <div class="gallery-mosaic" id="galleryGrid">
+    <div class="g-item g-tall"><img src="./assets/p15-BZI-2JqM.jpg" alt="恋爱记录"></div>
+    <div class="g-item g-square"><img src="./assets/p16-BNa7H6tp.jpg" alt="恋爱记录"></div>
+    <div class="g-item g-small"><img src="./assets/p17-DnMb7lTM.jpg" alt="恋爱记录"></div>
+    <div class="g-caption">愿这些瞬间，替我们说出一路走来的喜欢</div>
+    <div class="g-item g-wide"><img src="./assets/p02-Bbv5PkoL.jpg" alt="婚纱照"></div>
+    <div class="g-caption g-caption-soft">你在身边，普通的日子也会发光</div>
+    <div class="g-item g-small"><img src="./assets/p03-CI5HVWiW.jpg" alt="婚纱照"></div>
+    <div class="g-item g-tall"><img src="./assets/p04-MoxMgvPu.jpg" alt="婚纱照"></div>
+    <div class="g-item g-square"><img src="./assets/p07-Bayq61yf.jpg" alt="婚纱照"></div>
+    <div class="g-caption g-caption-deep">从相视而笑，到并肩走向未来，我们把答案写进每一次靠近</div>
+    <div class="g-item g-large"><img src="./assets/p09-BaaXNjdw.jpg" alt="婚纱照"></div>
+    <div class="g-item g-small"><img src="./assets/p10-EH4E9ShP.jpg" alt="婚纱照"></div>
+    <div class="g-item g-square"><img src="./assets/p11-dBpvxUk3.jpg" alt="婚纱照"></div>
+    <div class="g-caption g-caption-wide">镜头定格的是此刻，心里确认的是余生。愿往后的每一天，都像照片里一样温柔而坚定</div>
+    <div class="g-item g-wide"><img src="./assets/p12-DVi7_ECH.jpg" alt="婚纱照"></div>
+    <div class="g-item g-small"><img src="./assets/p13-DSZlkCPw.jpg" alt="婚纱照"></div>
+    <div class="g-item g-tall"><img src="./assets/p14-BeaYMlJN.jpg" alt="婚纱照"></div>
+    <div class="g-caption">我们走过很多风景，最想留下的还是彼此眼里的笑意</div>
+    <div class="g-item g-square"><img src="./assets/p01-DWGIwT2k.jpg" alt="婚纱照"></div>
+    <div class="g-caption g-caption-soft">这一刻，心动有了最郑重的模样</div>
+    <div class="g-item g-wide"><img src="./assets/p05-vc-DtvSv.jpg" alt="婚纱照"></div>
   </div>
 </section>
 
@@ -704,35 +822,22 @@ img { display:block; max-width:100%; }
 <!-- ===== RSVP ===== -->
 <section class="section rsvp">
   <div class="rs-deco"></div>
-  <h3>出 席 回 执</h3>
-  <p class="rsvp-sub">期待您的到来</p>
+  <h3>写 下 祝 福</h3>
+  <p class="rsvp-sub">把想说的话 留在祝福墙</p>
   <form class="rsvp-form" id="rsvpForm">
     <div class="form-group">
       <label>您的姓名</label>
       <input type="text" id="rsvpName" placeholder="请输入姓名" required>
     </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>是否出席</label>
-        <select id="rsvpAttend">
-          <option value="yes">一定到场</option>
-          <option value="no">遗憾缺席</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>出席人数</label>
-        <input type="number" id="rsvpCount" min="1" max="10" value="1">
-      </div>
-    </div>
     <div class="form-group">
       <label>祝福留言</label>
-      <textarea id="rsvpMsg" placeholder="写下您对新人的祝福..."></textarea>
+      <textarea id="rsvpMsg" placeholder="写下您对新人的祝福..." required></textarea>
     </div>
-    <button type="submit" class="rsvp-submit">送 出 祝 福</button>
+    <button type="submit" class="rsvp-submit">送 上 祝 福</button>
   </form>
   <div class="rsvp-success" id="rsvpSuccess">
     <div class="check">❀</div>
-    <div>感谢您的祝福！<br>期待与您相聚在这美好的一天</div>
+    <div>感谢您的祝福！<br>这份心意已放进祝福墙</div>
   </div>
 </section>
 
@@ -1059,11 +1164,10 @@ img { display:block; max-width:100%; }
     var name = document.getElementById('rsvpName').value.trim();
     if (!name) return;
     var msg = document.getElementById('rsvpMsg').value.trim();
+    if (!msg) return;
     try {
       var data = {
         name: name,
-        attend: document.getElementById('rsvpAttend').value,
-        count: document.getElementById('rsvpCount').value,
         msg: msg,
         ts: Date.now()
       };
